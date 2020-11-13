@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         textViewCity = findViewById(R.id.textViewCity);
         textViewTemp=findViewById(R.id.textViewTemp);
         weatherImage=findViewById(R.id.imageView);
         editText=findViewById(R.id.editText);
+        String content="https://openweathermap.org/data/2.5/weather?q=CheonAn&appid=439d4b804bc8187953eb36d2a8c26a02";
+        callWeatherData(content);
 
-        Button button=findViewById(R.id.Mybutton);
+        Button button=findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         textViewTemp.setText(temp.trim());
     }
     private void setIconInfo(String iconData){
-        String targetIcon="http://openweathermap.org/img/wn/" + iconData + "@2x.png";
+        String targetIcon="https://openweathermap.org/img/wn/" + iconData + "@2x.png";
         Uri uri= Uri.parse(targetIcon);
         Glide.with(this)
                 .load(uri)
